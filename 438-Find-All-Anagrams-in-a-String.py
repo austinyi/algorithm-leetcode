@@ -18,7 +18,8 @@ class Solution:
             cur[s[i]] = 1 + cur.get(s[i], 0)
         
             if cur[s[i-n2]] == 1:
-                cur.pop(s[i-n2])
+                # cur.pop(s[i-n2])
+                del cur[s[i-n2]]
             else:
                 cur[s[i-n2]] -= 1        
         if cur == pCount:
