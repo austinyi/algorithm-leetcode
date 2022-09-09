@@ -12,3 +12,5 @@ class Solution:
             
         return True if n == 1 else False
     
+## Can solve with fast, slow pointer
+# https://github.com/neetcode-gh/leetcode/blob/main/python/202-Happy-Number.py
