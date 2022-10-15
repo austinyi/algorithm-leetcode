@@ -11,10 +11,12 @@ class Solution:
         
         left, right = root.left, root.right
         while left:
-            if left.val >= root.val: return False
+            if left.val >= root.val: 
+                return False
             left = left.right
         while right:
-            if right.val <= root.val: return False
+            if right.val <= root.val: 
+                return False
             right = right.left
         
         return self.isValidBST(root.left) and self.isValidBST(root.right)
