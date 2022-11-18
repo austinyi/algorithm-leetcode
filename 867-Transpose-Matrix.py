@@ -9,4 +9,5 @@ class Solution:
 
         return ans
         
+        #return list(map(list, zip(*matrix)))
         
