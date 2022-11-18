@@ -10,3 +10,19 @@ class Solution:
             return []
         return [root.val] + self.preorderTraversal(root.left) + self.preorderTraversal(root.right)
         
+'''
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        if not root:
+            return []
+        stack = [root]
+        ans = []
+        while stack:
+            root = stack.pop()
+            ans.append(root.val)
+            if root.right:
+                stack.append(root.right)
+            if root.left:
+                stack.append(root.left)
+        return ans
+        
+  '''
