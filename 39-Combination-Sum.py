@@ -1,6 +1,5 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        ans = []
 
         def dfs(candidates, target, cur):
             ans = []
@@ -12,7 +11,8 @@ class Solution:
             for i in range(len(candidates)):
                 ans += dfs(candidates[i:], target - candidates[i], cur + [candidates[i]])
             return ans
-            
+         
+	#ans = []
         #for i in range(len(candidates)):
         #    ans += dfs(candidates[i:], target - candidates[i], [candidates[i]])
 
