@@ -19,3 +19,18 @@ class Solution:
         ans = dfs(candidates, target, [])
         
         return ans
+
+    
+'''
+## https://leetcode.com/problems/combination-sum/solutions/632799/Three-Python-easy-solutions-(DPBFSBacktrack)-with-explanation.-Time-beats-~88
+# Dynmaic Programming
+def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+	cache = [[] for _ in range(target + 1)]
+	cache[0] = [[]]
+	for c in candidates:
+		for i in range(target + 1):
+			if i >= c:
+				for temp_ans in cache[i - c]:
+					cache[i].append(temp_ans + [c])
+	return cache[-1]
+'''
