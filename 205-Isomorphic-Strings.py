@@ -1,15 +1,12 @@
-class Solution:
-    def isIsomorphic(self, s: str, t: str) -> bool:
-        s_to_t = dict()
+class Solution(object):
+    def isIsomorphic(self, s, t):
+        st = {}
         for i, c in enumerate(s):
-            if c in s_to_t:
-                if s_to_t[c] != t[i]:
+            if c not in st:
+                if t[i] in st.values():
                     return False
+                st[c] = t[i]
             else:
-                if t[i] in s_to_t.values():
+                if st[c] != t[i]:
                     return False
-                else:
-                    s_to_t[c] = t[i]
-
         return True
-      
