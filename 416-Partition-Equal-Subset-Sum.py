@@ -8,7 +8,7 @@ class Solution:
         
         s = set([0])
         for n in nums:
-            c = set()
+            c = set() # copying a new set because we cannot add elements to set s which we run a for loop.
             for e in s:
                 if e + n == target:
                     return True
