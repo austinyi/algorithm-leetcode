@@ -1,10 +1,11 @@
 class Solution:
     def getFactors(self, n: int) -> List[List[int]]:
-        def factor(n, i, cur, res):
+        ans = []
+        def factor(n, i, cur):
             while i * i <= n:
                 if n % i == 0:
-                    res.append(cur + [i, n//i])
-                    factor(n//i, i, cur + [i], res)
+                    ans.append(cur + [i, n//i])
+                    factor(n//i, i, cur + [i])
                 i += 1
-            return res
-        return factor(n, 2, [], [])
+        factor(n, 2, [])  
+        return ans
