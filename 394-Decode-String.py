@@ -23,3 +23,23 @@ class Solution:
                 stack.append(s[i])
 
         return "".join(stack)
+
+
+# class Solution:
+#     def decodeString(self, s: str) -> str:
+#         stack = []
+#         for c in s:
+#             if c == ']':
+#                 cur = ''
+#                 while stack[-1] != '[':
+#                     cur = stack.pop() + cur
+#                 stack.pop()
+
+#                 num = ''
+#                 while stack and stack[-1].isdigit():
+#                     num = stack.pop() + num
+#                 cur = int(num) * cur
+#                 stack.append(cur)
+#             else:
+#                 stack.append(c)
+#         return ''.join(stack)
