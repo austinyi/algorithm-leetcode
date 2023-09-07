@@ -19,12 +19,8 @@ class Solution:
             prevSum[curSum] -= 1
 
             return ans 
-        
+            
         return dfs(root, 0, {0:1})
-
-
-
-
 
 
 ######## Brute Force
