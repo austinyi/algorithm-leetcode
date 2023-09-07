@@ -1,3 +1,32 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
+
+        def dfs(node, curSum, prevSum):
+            if not node:
+                return 0
+            curSum += node.val
+            ans = prevSum.get(curSum - targetSum, 0)
+            prevSum[curSum] = 1 + prevSum.get(curSum, 0)
+            ans += dfs(node.left, curSum, prevSum)
+            ans += dfs(node.right, curSum, prevSum)
+            
+            prevSum[curSum] -= 1
+
+            return ans 
+        
+        return dfs(root, 0, {0:1})
+
+
+
+
+
+
 ######## Brute Force
 # Definition for a binary tree node.
 # class TreeNode:
