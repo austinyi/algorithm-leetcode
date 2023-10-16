@@ -4,17 +4,15 @@ class Solution:
         candidates.sort()
 
         def dfs(candidates, target, cur):
-            res = []
-            if target == 0:
-                return [cur]
-            elif target < 0:
-                return []
+            if target < 0:
+                return
+            elif target == 0:
+                ans.append(cur)
+            else:
+                for i in range(len(candidates)):
+                    if i > 0 and candidates[i] == candidates[i-1]:
+                        continue
+                    dfs(candidates[i+1:], target - candidates[i], cur + [candidates[i]])
 
-            for i in range(len(candidates)):
-                if i > 0 and candidates[i] == candidates[i-1]:
-                    continue
-                res += dfs(candidates[i+1:], target - candidates[i], cur + [candidates[i]])
-            return res
-
-        return dfs(candidates, target, [])
-        
+        dfs(candidates, target, [])
+        return ans
