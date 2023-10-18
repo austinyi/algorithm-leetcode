@@ -1,25 +1,27 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        h = {}
         ans = []
         nums.sort()
-        
-        p = len(nums) - 1
-        while p > 1: # nums[p] >= 0
-            l, r = 0, p - 1
+        n = len(nums) - 1
+
+        while n >= 2 and nums[n] >= 0:
+            l, r = 0, n-1
             while l < r:
-                if nums[l] + nums[r] + nums[p] == 0:
-                    ans.append([nums[l], nums[r], nums[p]])
+                threesum = nums[l] + nums[r] + nums[n]
+                if threesum == 0:
+                    ans.append([nums[l], nums[r], nums[n]])
                     l += 1
-                    while nums[l] == nums[l-1] and l < r:
+                    while l < r and nums[l] == nums[l-1]:
                         l += 1
-                elif nums[l] + nums[r] + nums[p] > 0:
-                    r -= 1
-                else:
+                elif threesum < 0:
                     l += 1
-            p -= 1
-            while nums[p] == nums[p+1] and p > 1:
-                p -= 1
+                elif threesum > 0:
+                    r -= 1
+            
+            n -= 1
+            while n >= 2 and nums[n] == nums[n+1]:
+                n -= 1
+        
         return ans
         
 '''        
