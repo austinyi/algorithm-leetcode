@@ -1,13 +1,23 @@
 class Solution:
-    def findKthLargest(self, nums: List[int], k: int) -> int:
-        heap = [-x for x in nums]
-        heapq.heapify(heap)
+  def findKthLargest(self, nums: List[int], k: int) -> int:
+    minHeap = []
 
-        for _ in range(k-1):
-            heapq.heappop(heap)
+    for num in nums:
+      heapq.heappush(minHeap, num)
+      if len(minHeap) > k:
+        heapq.heappop(minHeap)
 
-        return -heapq.heappop(heap)
+    return minHeap[0]
         
+# class Solution:
+#     def findKthLargest(self, nums: List[int], k: int) -> int:
+#         heap = [-x for x in nums]
+#         heapq.heapify(heap)
+
+#         for _ in range(k-1):
+#             heapq.heappop(heap)
+
+#         return -heapq.heappop(heap)
 
 '''
 ##### https://github.com/neetcode-gh/leetcode/blob/main/python/0215-kth-largest-element-in-an-array.py
