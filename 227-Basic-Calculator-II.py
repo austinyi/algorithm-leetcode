@@ -1,47 +1,74 @@
 class Solution:
     def calculate(self, s: str) -> int:
-        cur, ans = 0, 0
-        sign = 1
+        num = 0
+        op = '+'
         stack = []
 
-        for c in s:
+        for c in s + '+':
             if c.isdigit():
-                cur = 10*cur + int(c)
-            elif c in ['+','-']:
-                if stack:
-                    stack.append(cur)
-                    cur = stack.pop(0)
-                    while stack:
-                        op = stack.pop(0)
-                        if op == '*':
-                            cur *= stack.pop(0)
-                        else:
-                            cur //= stack.pop(0) 
-                    ans += sign * cur
-                else:
-                    ans += sign * cur
-                cur = 0
-                sign = 1 if c == '+' else -1    
+                num = 10*num + int(c)
+            elif c == ' ':
+                continue
+            else:
+                if op == '+':
+                    stack.append(num)
+                elif op == '-':
+                    stack.append(-num)
+                elif op == '*':
+                    stack.append(stack.pop() * num)
+                elif op == '/':
+                    stack.append(int(stack.pop()/num))
+                num = 0
+                op = c
+        return sum(stack)
 
-            elif c in ['*','/']:
-                stack.append(cur)
-                stack.append(c)
-                cur = 0
 
-        if stack:
-            stack.append(cur)
-            cur = stack.pop(0)
-            while stack:
-                op = stack.pop(0)
-                if op == '*':
-                    cur *= stack.pop(0)
-                else:
-                    cur //= stack.pop(0) 
-            ans += sign * cur
-        else:
-            ans += sign * cur
 
-        return ans
+
+
+
+        # cur, ans = 0, 0
+        # sign = 1
+        # stack = []
+
+        # for c in s:
+        #     if c.isdigit():
+        #         cur = 10*cur + int(c)
+        #     elif c in ['+','-']:
+        #         if stack:
+        #             stack.append(cur)
+        #             cur = stack.pop(0)
+        #             while stack:
+        #                 op = stack.pop(0)
+        #                 if op == '*':
+        #                     cur *= stack.pop(0)
+        #                 else:
+        #                     cur //= stack.pop(0) 
+        #             ans += sign * cur
+        #         else:
+        #             ans += sign * cur
+        #         cur = 0
+        #         sign = 1 if c == '+' else -1    
+
+        #     elif c in ['*','/']:
+        #         stack.append(cur)
+        #         stack.append(c)
+        #         cur = 0
+
+        # if stack:
+        #     stack.append(cur)
+        #     cur = stack.pop(0)
+        #     while stack:
+        #         op = stack.pop(0)
+        #         if op == '*':
+        #             cur *= stack.pop(0)
+        #         else:
+        #             cur //= stack.pop(0) 
+        #     ans += sign * cur
+        # else:
+        #     ans += sign * cur
+
+        # return ans
 
 
 
