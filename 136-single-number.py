@@ -1,5 +1,6 @@
-# Bit Manipulation
+# Bit Manipulation (XOR operation)
 ## Time: O(n), Space: O(1)
+# x^x = 0, x^0 = x
 class Solution(object):
     def singleNumber(self, nums: List[int]) -> int:
         a = 0
