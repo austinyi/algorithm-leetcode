@@ -4,6 +4,11 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
         # https://leetcode.com/problems/next-permutation/editorial
+        # Scan numbers from the right, 
+        # and find pair a[i] and a[i−1] where, a[i] > a[i−1].
+        # swap a[i-1] and a[j] 
+        # (scan from right and find first j such that a[j] > a[i-1])
+        # reverse the numbers following a[i-1]
         def reverse(nums, start):
             i, j = start, len(nums) - 1
             while i < j:
