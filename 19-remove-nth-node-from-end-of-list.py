@@ -32,9 +32,8 @@ class Solution:
 #         left = dummy
 #         right = head
 
-#         while n > 0:
+#         for i in range(n):
 #             right = right.next
-#             n -= 1
 
 #         while right:
 #             left = left.next
@@ -42,4 +41,5 @@ class Solution:
 
 #         # delete
 #         left.next = left.next.next
+
 #         return dummy.next
