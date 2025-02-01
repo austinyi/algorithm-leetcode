@@ -4,14 +4,16 @@
 #         self.val = val
 #         self.next = next
 
+# Time: O(n), Space: O(1)
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        # Find middle point (slow)
         slow, fast = head, head
         while fast and fast.next:
-            slow, fast = slow.next, fast.next.next
-        if fast:
+            fast = fast.next.next
             slow = slow.next
-
+        
+        # Reverse second half (slow)
         prev = None
         while slow:
             temp = slow.next
@@ -19,8 +21,10 @@ class Solution:
             prev = slow
             slow = temp
 
+        # Check palindrome
         while prev:
             if prev.val != head.val:
                 return False
-            prev, head = prev.next, head.next
+            prev = prev.next
+            head = head.next
         return True
